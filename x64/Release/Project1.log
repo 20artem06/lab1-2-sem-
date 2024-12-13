@@ -1,0 +1,151 @@
+﻿  Functional_tests.cpp
+C:\Users\Артем\Desktop\Project1\Project1\shared_ptr.h(83,9): warning C4297: shared_ptr<test_cyclic_shared_ptr::Node>::operator ->: ожидается, что функция не будет выдавать исключения, но она это делает
+C:\Users\Артем\Desktop\Project1\Project1\shared_ptr.h(83,9): message : для функции указан атрибут __declspec(nothrow), throw(), noexcept(true) или noexcept
+C:\Users\Артем\Desktop\Project1\Project1\shared_ptr.h(79,8): message : во время компиляции функции-члена класс шаблон "T *shared_ptr<T>::operator ->(void) noexcept const"
+          with
+          [
+              T=test_cyclic_shared_ptr::Node
+          ]
+C:\Users\Артем\Desktop\Project1\Project1\Functional_tests.cpp(157,17): message : см. первую ссылку на "shared_ptr<test_cyclic_shared_ptr::Node>::operator ->" в "test_cyclic_shared_ptr"
+C:\Users\Артем\Desktop\Project1\Project1\Functional_tests.cpp(148,26): message : выполняется компиляция ссылки на экземпляр класс шаблон функции "shared_ptr<test_cyclic_shared_ptr::Node>"
+C:\Users\Артем\Desktop\Project1\Project1\shared_ptr.h(83,9): warning C4297: shared_ptr<Test>::operator ->: ожидается, что функция не будет выдавать исключения, но она это делает
+C:\Users\Артем\Desktop\Project1\Project1\shared_ptr.h(83,9): message : для функции указан атрибут __declspec(nothrow), throw(), noexcept(true) или noexcept
+C:\Users\Артем\Desktop\Project1\Project1\shared_ptr.h(79,8): message : во время компиляции функции-члена класс шаблон "T *shared_ptr<T>::operator ->(void) noexcept const"
+          with
+          [
+              T=Test
+          ]
+C:\Users\Артем\Desktop\Project1\Project1\Functional_tests.cpp(69,9): message : см. первую ссылку на "shared_ptr<Test>::operator ->" в "test_shared_ptr"
+C:\Users\Артем\Desktop\Project1\Project1\Functional_tests.cpp(61,22): message : выполняется компиляция ссылки на экземпляр класс шаблон функции "shared_ptr<Test>"
+C:\Users\Артем\Desktop\Project1\Project1\unique_ptr.h(53,9): warning C4297: unique_ptr<Test>::operator ->: ожидается, что функция не будет выдавать исключения, но она это делает
+C:\Users\Артем\Desktop\Project1\Project1\unique_ptr.h(53,9): message : для функции указан атрибут __declspec(nothrow), throw(), noexcept(true) или noexcept
+C:\Users\Артем\Desktop\Project1\Project1\unique_ptr.h(51,8): message : во время компиляции функции-члена класс шаблон "T *unique_ptr<T>::operator ->(void) noexcept const"
+          with
+          [
+              T=Test
+          ]
+C:\Users\Артем\Desktop\Project1\Project1\Functional_tests.cpp(38,5): message : см. первую ссылку на "unique_ptr<Test>::operator ->" в "test_unique_ptr"
+C:\Users\Артем\Desktop\Project1\Project1\Functional_tests.cpp(36,22): message : выполняется компиляция ссылки на экземпляр класс шаблон функции "unique_ptr<Test>"
+  Main.cpp
+C:\Users\Артем\Desktop\Project1\Project1\Main.cpp(1,10): fatal  error C1083: Не удается открыть файл включение: QApplication: No such file or directory,
+  MainWindow.cpp
+C:\Users\Артем\Desktop\Project1\Project1\mainwindow.h(4,10): fatal  error C1083: Не удается открыть файл включение: QMainWindow: No such file or directory,
+  SmartListSequenceTests.cpp
+C:\Users\Артем\Desktop\Project1\Project1\unique_ptr.h(53,9): warning C4297: unique_ptr<Sequence<T>>::operator ->: ожидается, что функция не будет выдавать исключения, но она это делает
+          with
+          [
+              T=int
+          ]
+C:\Users\Артем\Desktop\Project1\Project1\unique_ptr.h(53,9): message : для функции указан атрибут __declspec(nothrow), throw(), noexcept(true) или noexcept
+C:\Users\Артем\Desktop\Project1\Project1\unique_ptr.h(51,8): message : во время компиляции функции-члена класс шаблон "T *unique_ptr<T>::operator ->(void) noexcept const"
+          with
+          [
+              T=Sequence<int>
+          ]
+C:\Users\Артем\Desktop\Project1\Project1\SmartListSequence.h(64,9): message : см. первую ссылку на "unique_ptr<Sequence<T>>::operator ->" в "SmartListSequence<int>::concat"
+          with
+          [
+              T=int
+          ]
+C:\Users\Артем\Desktop\Project1\Project1\SmartListSequenceTests.cpp(66,21): message : см. первую ссылку на "SmartListSequence<int>::concat" в "testSequenceConcat"
+C:\Users\Артем\Desktop\Project1\Project1\SmartListSequenceTests.cpp(54,31): message : выполняется компиляция ссылки на экземпляр класс шаблон функции "unique_ptr<Sequence<T>>"
+          with
+          [
+              T=int
+          ]
+C:\Users\Артем\Desktop\Project1\Project1\unique_ptr.h(53,9): warning C4297: unique_ptr<SmartList<T>>::operator ->: ожидается, что функция не будет выдавать исключения, но она это делает
+          with
+          [
+              T=int
+          ]
+C:\Users\Артем\Desktop\Project1\Project1\unique_ptr.h(53,9): message : для функции указан атрибут __declspec(nothrow), throw(), noexcept(true) или noexcept
+C:\Users\Артем\Desktop\Project1\Project1\unique_ptr.h(51,8): message : во время компиляции функции-члена класс шаблон "T *unique_ptr<T>::operator ->(void) noexcept const"
+          with
+          [
+              T=SmartList<int>
+          ]
+C:\Users\Артем\Desktop\Project1\Project1\SmartListSequence.h(65,25): message : см. первую ссылку на "unique_ptr<SmartList<T>>::operator ->" в "SmartListSequence<int>::concat"
+          with
+          [
+              T=int
+          ]
+C:\Users\Артем\Desktop\Project1\Project1\SmartListSequenceTests.cpp(66,21): message : см. первую ссылку на "SmartListSequence<int>::concat" в "testSequenceConcat"
+C:\Users\Артем\Desktop\Project1\Project1\SmartListSequence.h(10,30): message : выполняется компиляция ссылки на экземпляр класс шаблон функции "unique_ptr<SmartList<T>>"
+          with
+          [
+              T=int
+          ]
+C:\Users\Артем\Desktop\Project1\Project1\SmartListSequenceTests.cpp(7,28): message : выполняется компиляция ссылки на экземпляр класс шаблон функции "SmartListSequence<int>"
+C:\Users\Артем\Desktop\Project1\Project1\shared_ptr.h(83,9): warning C4297: shared_ptr<Node<T>>::operator ->: ожидается, что функция не будет выдавать исключения, но она это делает
+          with
+          [
+              T=int
+          ]
+C:\Users\Артем\Desktop\Project1\Project1\shared_ptr.h(83,9): message : для функции указан атрибут __declspec(nothrow), throw(), noexcept(true) или noexcept
+C:\Users\Артем\Desktop\Project1\Project1\shared_ptr.h(79,8): message : во время компиляции функции-члена класс шаблон "T *shared_ptr<T>::operator ->(void) noexcept const"
+          with
+          [
+              T=Node<int>
+          ]
+C:\Users\Артем\Desktop\Project1\Project1\SmartList.h(129,18): message : см. первую ссылку на "shared_ptr<Node<T>>::operator ->" в "SmartList<T>::insertAt"
+          with
+          [
+              T=int
+          ]
+C:\Users\Артем\Desktop\Project1\Project1\SmartListSequence.h(60,23): message : см. первую ссылку на "SmartList<T>::insertAt" в "SmartListSequence<int>::insertAt"
+          with
+          [
+              T=int
+          ]
+C:\Users\Артем\Desktop\Project1\Project1\SmartListSequenceTests.cpp(27,22): message : см. первую ссылку на "SmartListSequence<int>::insertAt" в "testSequenceInsertAt"
+C:\Users\Артем\Desktop\Project1\Project1\SmartList.h(21,25): message : выполняется компиляция ссылки на экземпляр класс шаблон функции "shared_ptr<Node<T>>"
+          with
+          [
+              T=int
+          ]
+C:\Users\Артем\Desktop\Project1\Project1\SmartListSequence.h(65,13): message : выполняется компиляция ссылки на экземпляр класс шаблон функции "SmartList<T>"
+          with
+          [
+              T=int
+          ]
+C:\Users\Артем\Desktop\Project1\Project1\SmartListSequence.h(63,10): message : во время компиляции функции-члена класс шаблон "void SmartListSequence<int>::concat(unique_ptr<Sequence<T>>)"
+          with
+          [
+              T=int
+          ]
+C:\Users\Артем\Desktop\Project1\Project1\SmartListSequenceTests.cpp(66,21): message : см. первую ссылку на "SmartListSequence<int>::concat" в "testSequenceConcat"
+  SmartListTests.cpp
+C:\Users\Артем\Desktop\Project1\Project1\unique_ptr.h(53,9): warning C4297: unique_ptr<SmartList<int>>::operator ->: ожидается, что функция не будет выдавать исключения, но она это делает
+C:\Users\Артем\Desktop\Project1\Project1\unique_ptr.h(53,9): message : для функции указан атрибут __declspec(nothrow), throw(), noexcept(true) или noexcept
+C:\Users\Артем\Desktop\Project1\Project1\unique_ptr.h(51,8): message : во время компиляции функции-члена класс шаблон "T *unique_ptr<T>::operator ->(void) noexcept const"
+          with
+          [
+              T=SmartList<int>
+          ]
+C:\Users\Артем\Desktop\Project1\Project1\SmartList.h(141,28): message : см. первую ссылку на "unique_ptr<SmartList<int>>::operator ->" в "SmartList<int>::concatenate"
+C:\Users\Артем\Desktop\Project1\Project1\SmartListTests.cpp(57,45): message : см. первую ссылку на "SmartList<int>::concatenate" в "testConcatenate"
+C:\Users\Артем\Desktop\Project1\Project1\SmartListTests.cpp(46,32): message : выполняется компиляция ссылки на экземпляр класс шаблон функции "unique_ptr<SmartList<int>>"
+C:\Users\Артем\Desktop\Project1\Project1\shared_ptr.h(83,9): warning C4297: shared_ptr<Node<T>>::operator ->: ожидается, что функция не будет выдавать исключения, но она это делает
+          with
+          [
+              T=int
+          ]
+C:\Users\Артем\Desktop\Project1\Project1\shared_ptr.h(83,9): message : для функции указан атрибут __declspec(nothrow), throw(), noexcept(true) или noexcept
+C:\Users\Артем\Desktop\Project1\Project1\shared_ptr.h(79,8): message : во время компиляции функции-члена класс шаблон "T *shared_ptr<T>::operator ->(void) noexcept const"
+          with
+          [
+              T=Node<int>
+          ]
+C:\Users\Артем\Desktop\Project1\Project1\SmartList.h(157,23): message : см. первую ссылку на "shared_ptr<Node<T>>::operator ->" в "SmartList<int>::operator ="
+          with
+          [
+              T=int
+          ]
+C:\Users\Артем\Desktop\Project1\Project1\SmartListTests.cpp(69,18): message : см. первую ссылку на "SmartList<int>::operator =" в "testAssignmentOperator"
+C:\Users\Артем\Desktop\Project1\Project1\SmartList.h(21,25): message : выполняется компиляция ссылки на экземпляр класс шаблон функции "shared_ptr<Node<T>>"
+          with
+          [
+              T=int
+          ]
+C:\Users\Артем\Desktop\Project1\Project1\SmartListTests.cpp(8,20): message : выполняется компиляция ссылки на экземпляр класс шаблон функции "SmartList<int>"
+  Stress_tests.cpp
