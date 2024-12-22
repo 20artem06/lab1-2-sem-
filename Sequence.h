@@ -23,4 +23,8 @@ public:
     virtual void insertAt(int index, const T& item) = 0;
 
     virtual void concat(unique_ptr<Sequence<T>> sequence) = 0;
+<<<<<<< HEAD
 };
+=======
+};
+>>>>>>> 40f7a524a8a1051e7f935114239e04dfeb507808

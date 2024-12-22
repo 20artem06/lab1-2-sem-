@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 #pragma once
 
 #include <cstddef>
 #include <stdexcept>
+=======
+#pragma once 
+
+#include <cstddef>
+#include <stdexcept> 
+>>>>>>> 40f7a524a8a1051e7f935114239e04dfeb507808
 #include <atomic>
 #include "weak_ptr.h"
 #include "control_block.h"
@@ -76,7 +83,11 @@ public:
         }
         throw std::runtime_error("Dereferencing null unique_ptr");
     }
+<<<<<<< HEAD
     T* operator->() const {
+=======
+    T* operator->() const noexcept {
+>>>>>>> 40f7a524a8a1051e7f935114239e04dfeb507808
         if (control->ptr != nullptr) {
             return control ? control->ptr : nullptr;
         }
@@ -117,7 +128,11 @@ shared_ptr<T>::shared_ptr(const weak_ptr<T>& wp) noexcept : control(wp.control) 
         while (current_shared != 0) {
 
             if (control->shared_count.compare_exchange_weak(
+<<<<<<< HEAD
                     current_shared, current_shared + 1, std::memory_order_acq_rel, std::memory_order_acquire)) {
+=======
+                current_shared, current_shared + 1, std::memory_order_acq_rel, std::memory_order_acquire)) {
+>>>>>>> 40f7a524a8a1051e7f935114239e04dfeb507808
                 break;
             }
         }
@@ -125,4 +140,8 @@ shared_ptr<T>::shared_ptr(const weak_ptr<T>& wp) noexcept : control(wp.control) 
             control = nullptr;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 40f7a524a8a1051e7f935114239e04dfeb507808

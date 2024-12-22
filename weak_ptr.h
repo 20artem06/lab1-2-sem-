@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 #pragma once
+=======
+#pragma once 
+>>>>>>> 40f7a524a8a1051e7f935114239e04dfeb507808
 
 #include <cstddef>
 #include <atomic>
@@ -59,14 +63,35 @@ public:
     }
     weak_ptr& operator=(weak_ptr&& other) noexcept {
         if (this != &other) {
+<<<<<<< HEAD
             release();
+=======
+            if (control) {
+                if (control->weak_count.fetch_sub(1, std::memory_order_acq_rel) == 1) {
+                    if (control->shared_count.load(std::memory_order_acquire) == 0) {
+                        delete control;
+                    }
+                }
+            }
+>>>>>>> 40f7a524a8a1051e7f935114239e04dfeb507808
             control = other.control;
             other.control = nullptr;
         }
         return *this;
     }
     ~weak_ptr() {
+<<<<<<< HEAD
         release();
+=======
+        if (control) {
+            if (control->weak_count.fetch_sub(1, std::memory_order_acq_rel) == 1) {
+                if (control->shared_count.load(std::memory_order_acquire) == 0) {
+                    delete control;
+                }
+            }
+            control = nullptr;
+        }
+>>>>>>> 40f7a524a8a1051e7f935114239e04dfeb507808
     }
     bool expired() const noexcept {
         return !control || control->shared_count.load(std::memory_order_acquire) == 0;
@@ -86,4 +111,8 @@ public:
     }
 
     friend class shared_ptr<T>;
+<<<<<<< HEAD
 };
+=======
+};
+>>>>>>> 40f7a524a8a1051e7f935114239e04dfeb507808

@@ -10,78 +10,69 @@
 
 MainWindow::MainWindow(QWidget* parent)
     : QMainWindow(parent)
-    , btnCreateShared(new QPushButton("РЎРѕР·РґР°С‚СЊ shared_ptr", this))
-    , btnCreateUnique(new QPushButton("РЎРѕР·РґР°С‚СЊ unique_ptr", this))
-    , btnCreateWeak(new QPushButton("РЎРѕР·РґР°С‚СЊ weak_ptr", this))
-    , btnRunFunctionalTests(new QPushButton("Р—Р°РїСѓСЃС‚РёС‚СЊ Р¤СѓРЅРєС†РёРѕРЅР°Р»СЊРЅС‹Рµ РўРµСЃС‚С‹", this))
-    , btnRunStressTests(new QPushButton("Р—Р°РїСѓСЃС‚РёС‚СЊ РќР°РіСЂСѓР·РѕС‡РЅС‹Рµ РўРµСЃС‚С‹", this))
+    , btnCreateShared(new QPushButton("Создать shared_ptr", this))
+    , btnCreateUnique(new QPushButton("Создать unique_ptr", this))
+    , btnCreateWeak(new QPushButton("Создать weak_ptr", this))
+    , btnRunFunctionalTests(new QPushButton("Запустить Функциональные Тесты", this))
+    , btnRunStressTests(new QPushButton("Запустить Нагрузочные Тесты", this))
     , textEditLog(new QTextEdit(this))
     , functionalTestProcess(new QProcess(this))
     , stressTestProcess(new QProcess(this))
 {
-    // РќР°СЃС‚СЂРѕР№РєР° UI
+    // Настройка UI
     QWidget* centralWidget = new QWidget(this);
     setCentralWidget(centralWidget);
 
     QVBoxLayout* mainLayout = new QVBoxLayout(centralWidget);
 
-    // РџРµСЂРІР°СЏ СЃС‚СЂРѕРєР° РєРЅРѕРїРѕРє
+    // Первая строка кнопок
     QHBoxLayout* layout1 = new QHBoxLayout();
     layout1->addWidget(btnCreateShared);
     layout1->addWidget(btnCreateUnique);
     layout1->addWidget(btnCreateWeak);
-
-    btnCreateShared->setStyleSheet("background-color: #FFCCCC; color: black;"); // Р¦РІРµС‚ РєРЅРѕРїРєРё
-    btnCreateUnique->setStyleSheet("background-color: #CCFFCC; color: black;"); // Р¦РІРµС‚ РєРЅРѕРїРєРё
-    btnCreateWeak->setStyleSheet("background-color: #CCCCFF; color: black;"); // Р¦РІРµС‚ РєРЅРѕРїРєРё
-
-    btnCreateShared->setFixedSize(150, 50);
-    btnCreateUnique->setFixedSize(150, 50);
-    btnCreateWeak->setFixedSize(150, 50);
-
     mainLayout->addLayout(layout1);
 
-    // Р’С‚РѕСЂР°СЏ СЃС‚СЂРѕРєР° РєРЅРѕРїРѕРє
+    // Вторая строка кнопок
     QHBoxLayout* layout2 = new QHBoxLayout();
     layout2->addWidget(btnRunFunctionalTests);
     layout2->addWidget(btnRunStressTests);
     mainLayout->addLayout(layout2);
 
-    // Р›РѕРі С‚РµРєСЃС‚РѕРІРѕРіРѕ СЂРµРґР°РєС‚РѕСЂР°
+    // Лог текстового редактора
     textEditLog->setReadOnly(true);
     mainLayout->addWidget(textEditLog);
 
-    // РџРѕРґРєР»СЋС‡РµРЅРёРµ СЃРёРіРЅР°Р»РѕРІ Рє СЃР»РѕС‚Р°Рј
+    // Подключение сигналов к слотам
     connect(btnCreateShared, &QPushButton::clicked, this, &MainWindow::on_btnCreateShared_clicked);
     connect(btnCreateUnique, &QPushButton::clicked, this, &MainWindow::on_btnCreateUnique_clicked);
     connect(btnCreateWeak, &QPushButton::clicked, this, &MainWindow::on_btnCreateWeak_clicked);
     connect(btnRunFunctionalTests, &QPushButton::clicked, this, &MainWindow::on_btnRunFunctionalTests_clicked);
     connect(btnRunStressTests, &QPushButton::clicked, this, &MainWindow::on_btnRunStressTests_clicked);
 
-    // РџРѕРґРєР»СЋС‡РµРЅРёРµ СЃРёРіРЅР°Р»РѕРІ Р·Р°РІРµСЂС€РµРЅРёСЏ РїСЂРѕС†РµСЃСЃРѕРІ Рє СЃР»РѕС‚Р°Рј
+    // Подключение сигналов завершения процессов к слотам
     connect(functionalTestProcess, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished),
-            this, &MainWindow::functionalTestsFinished);
+        this, &MainWindow::functionalTestsFinished);
     connect(stressTestProcess, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished),
-            this, &MainWindow::stressTestsFinished);
+        this, &MainWindow::stressTestsFinished);
 
-    // РџРѕРґРєР»СЋС‡РµРЅРёРµ СЃРёРіРЅР°Р»РѕРІ РіРѕС‚РѕРІРЅРѕСЃС‚Рё РґР°РЅРЅС‹С…
+    // Подключение сигналов готовности данных
     connect(functionalTestProcess, &QProcess::readyReadStandardOutput, this, [this]() {
         QString output = functionalTestProcess->readAllStandardOutput();
         logMessage(output);
-    });
+        });
     connect(functionalTestProcess, &QProcess::readyReadStandardError, this, [this]() {
         QString output = functionalTestProcess->readAllStandardError();
         logMessage(output);
-    });
+        });
 
     connect(stressTestProcess, &QProcess::readyReadStandardOutput, this, [this]() {
         QString output = stressTestProcess->readAllStandardOutput();
         logMessage(output);
-    });
+        });
     connect(stressTestProcess, &QProcess::readyReadStandardError, this, [this]() {
         QString output = stressTestProcess->readAllStandardError();
         logMessage(output);
-    });
+        });
 }
 
 MainWindow::~MainWindow()
@@ -97,7 +88,7 @@ void MainWindow::logMessage(const QString& message)
 void MainWindow::on_btnCreateShared_clicked()
 {
     sp = shared_ptr<TestObject>(new TestObject(100));
-    QString msg = QString("РЎРѕР·РґР°РЅ shared_ptr СЃ use_count = %1").arg(sp.use_count());
+    QString msg = QString("Создан shared_ptr с use_count = %1").arg(sp.use_count());
     logMessage(msg);
 }
 
@@ -105,7 +96,7 @@ void MainWindow::on_btnCreateUnique_clicked()
 {
     up = unique_ptr<TestObject>(new TestObject(200));
     if (up) {
-        QString msg = QString("РЎРѕР·РґР°РЅ unique_ptr СЃ РѕР±СЉРµРєС‚РѕРј ID = %1").arg(up->id);
+        QString msg = QString("Создан unique_ptr с объектом ID = %1").arg(up->id);
         logMessage(msg);
     }
 }
@@ -115,18 +106,18 @@ void MainWindow::on_btnCreateWeak_clicked()
     wp = weak_ptr<TestObject>(sp);
     if (!wp.expired()) {
         shared_ptr<TestObject> sp_locked = wp.lock();
-        QString msg = QString("РЎРѕР·РґР°РЅ weak_ptr. use_count = %1").arg(sp_locked.use_count());
+        QString msg = QString("Создан weak_ptr. use_count = %1").arg(sp_locked.use_count());
         logMessage(msg);
     }
     else {
-        logMessage("weak_ptr РёСЃС‚РµРє. РћР±СЉРµРєС‚ СѓРЅРёС‡С‚РѕР¶РµРЅ.");
+        logMessage("weak_ptr истек. Объект уничтожен.");
     }
 }
 
 void MainWindow::on_btnRunFunctionalTests_clicked()
 {
     if (functionalTestProcess->state() != QProcess::NotRunning) {
-        QMessageBox::information(this, "РРЅС„РѕСЂРјР°С†РёСЏ", "Р¤СѓРЅРєС†РёРѕРЅР°Р»СЊРЅС‹Рµ С‚РµСЃС‚С‹ СѓР¶Рµ Р·Р°РїСѓСЃРєР°СЋС‚СЃСЏ.");
+        QMessageBox::information(this, "Информация", "Функциональные тесты уже запускаются.");
         return;
     }
 
@@ -137,18 +128,18 @@ void MainWindow::on_btnRunFunctionalTests_clicked()
 #endif
 
     if (!QFile::exists(testPath)) {
-        QMessageBox::warning(this, "РћС€РёР±РєР°", "РќРµ РЅР°Р№РґРµРЅ РёСЃРїРѕР»РЅСЏРµРјС‹Р№ С„Р°Р№Р» functional_tests.");
+        QMessageBox::warning(this, "Ошибка", "Не найден исполняемый файл functional_tests.");
         return;
     }
 
-    logMessage("Р—Р°РїСѓСЃРє С„СѓРЅРєС†РёРѕРЅР°Р»СЊРЅС‹С… С‚РµСЃС‚РѕРІ...");
+    logMessage("Запуск функциональных тестов...");
     functionalTestProcess->start(testPath);
 }
 
 void MainWindow::on_btnRunStressTests_clicked()
 {
     if (stressTestProcess->state() != QProcess::NotRunning) {
-        QMessageBox::information(this, "РРЅС„РѕСЂРјР°С†РёСЏ", "РќР°РіСЂСѓР·РѕС‡РЅС‹Рµ С‚РµСЃС‚С‹ СѓР¶Рµ Р·Р°РїСѓСЃРєР°СЋС‚СЃСЏ.");
+        QMessageBox::information(this, "Информация", "Нагрузочные тесты уже запускаются.");
         return;
     }
 
@@ -159,30 +150,30 @@ void MainWindow::on_btnRunStressTests_clicked()
 #endif
 
     if (!QFile::exists(testPath)) {
-        QMessageBox::warning(this, "РћС€РёР±РєР°", "РќРµ РЅР°Р№РґРµРЅ РёСЃРїРѕР»РЅСЏРµРјС‹Р№ С„Р°Р№Р» stress_tests.");
+        QMessageBox::warning(this, "Ошибка", "Не найден исполняемый файл stress_tests.");
         return;
     }
 
-    logMessage("Р—Р°РїСѓСЃРє РЅР°РіСЂСѓР·РѕС‡РЅС‹С… С‚РµСЃС‚РѕРІ...");
+    logMessage("Запуск нагрузочных тестов...");
     stressTestProcess->start(testPath);
 }
 
 void MainWindow::functionalTestsFinished(int exitCode, QProcess::ExitStatus exitStatus)
 {
     if (exitStatus == QProcess::NormalExit && exitCode == 0) {
-        logMessage("Р¤СѓРЅРєС†РёРѕРЅР°Р»СЊРЅС‹Рµ С‚РµСЃС‚С‹ Р·Р°РІРµСЂС€РµРЅС‹ СѓСЃРїРµС€РЅРѕ.");
+        logMessage("Функциональные тесты завершены успешно.");
     }
     else {
-        logMessage("Р¤СѓРЅРєС†РёРѕРЅР°Р»СЊРЅС‹Рµ С‚РµСЃС‚С‹ Р·Р°РІРµСЂС€РёР»РёСЃСЊ СЃ РѕС€РёР±РєРѕР№.");
+        logMessage("Функциональные тесты завершились с ошибкой.");
     }
 }
 
 void MainWindow::stressTestsFinished(int exitCode, QProcess::ExitStatus exitStatus)
 {
     if (exitStatus == QProcess::NormalExit && exitCode == 0) {
-        logMessage("РќР°РіСЂСѓР·РѕС‡РЅС‹Рµ С‚РµСЃС‚С‹ Р·Р°РІРµСЂС€РµРЅС‹ СѓСЃРїРµС€РЅРѕ.");
+        logMessage("Нагрузочные тесты завершены успешно.");
     }
     else {
-        logMessage("РќР°РіСЂСѓР·РѕС‡РЅС‹Рµ С‚РµСЃС‚С‹ Р·Р°РІРµСЂС€РёР»РёСЃСЊ СЃ РѕС€РёР±РєРѕР№.");
+        logMessage("Нагрузочные тесты завершились с ошибкой.");
     }
 }

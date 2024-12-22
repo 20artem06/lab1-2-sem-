@@ -1,7 +1,11 @@
 #include <iostream>
 #include <chrono>
 #include <vector>
+<<<<<<< HEAD
 #include <cstdlib>
+=======
+#include <cstdlib> 
+>>>>>>> 40f7a524a8a1051e7f935114239e04dfeb507808
 #include <memory>
 
 #include "shared_ptr.h"
@@ -130,4 +134,8 @@ void testSTLSmartPointers(int numObjects) {
 //    testSTLSmartPointers(numObjects);
 //
 //    return 0;
+<<<<<<< HEAD
 //}
+=======
+//}
+>>>>>>> 40f7a524a8a1051e7f935114239e04dfeb507808

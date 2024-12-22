@@ -15,14 +15,14 @@
 
 struct TestObject {
     int id;
-    TestObject(int i) : id(i) { std::cout << "TestObject(" << id << ") ÑĞ¾Ğ·Ğ´Ğ°Ğ½.\n"; }
-    ~TestObject() { std::cout << "TestObject(" << id << ") ÑƒĞ½Ğ¸Ñ‡Ñ‚Ğ¾Ğ¶ĞµĞ½.\n"; }
-    void greet() { std::cout << "ĞŸÑ€Ğ¸Ğ²ĞµÑ‚ Ğ¾Ñ‚ TestObject(" << id << ")!\n"; }
+    TestObject(int i) : id(i) { std::cout << "TestObject(" << id << ") ñîçäàí.\n"; }
+    ~TestObject() { std::cout << "TestObject(" << id << ") óíè÷òîæåí.\n"; }
+    void greet() { std::cout << "Ïğèâåò îò TestObject(" << id << ")!\n"; }
 };
 
 class MainWindow : public QMainWindow
 {
-    Q_OBJECT
+    //Q_OBJECT
 
 public:
     MainWindow(QWidget* parent = nullptr);
@@ -58,4 +58,4 @@ private:
     void logMessage(const QString& message);
 };
 
-#endif
+#endif 

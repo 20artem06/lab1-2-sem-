@@ -3,7 +3,10 @@
 #include "unique_ptr.h"
 #include "SmartList.h"
 #include "Sequence.h"
+<<<<<<< HEAD
 #include <algorithm>
+=======
+>>>>>>> 40f7a524a8a1051e7f935114239e04dfeb507808
 
 template<class T>
 class SmartListSequence : public Sequence<T> {
@@ -66,4 +69,8 @@ public:
             base->append(sequence->get(i));
         }
     }
+<<<<<<< HEAD
 };
+=======
+};
+>>>>>>> 40f7a524a8a1051e7f935114239e04dfeb507808

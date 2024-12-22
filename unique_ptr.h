@@ -2,8 +2,19 @@
 #define UNIQUE_PTR_H
 
 #include <cstddef>
+<<<<<<< HEAD
 #include <stdexcept>
 
+=======
+#include <stdexcept> 
+template <typename T>
+struct UniquePtrControl {
+    T* ptr;
+
+    explicit UniquePtrControl(T* p = nullptr) : ptr(p) {}
+    ~UniquePtrControl() { delete ptr; }
+};
+>>>>>>> 40f7a524a8a1051e7f935114239e04dfeb507808
 
 template <typename T>
 class unique_ptr {
@@ -42,11 +53,17 @@ public:
         throw std::runtime_error("Dereferencing null unique_ptr");
     }
 
+<<<<<<< HEAD
     T* operator->() const {
         if (!ptr) {
             throw std::runtime_error("Dereferencing null unique_ptr"); //забыл проверку сделать
         }
         return ptr;
+=======
+    T* operator->() const noexcept {
+        return ptr;
+        throw std::runtime_error("Dereferencing null unique_ptr");
+>>>>>>> 40f7a524a8a1051e7f935114239e04dfeb507808
     }
 
     T* get() const noexcept { return ptr; }
@@ -79,4 +96,8 @@ void swap(unique_ptr<T>& a, unique_ptr<T>& b) noexcept {
     a.swap(b);
 }
 
+<<<<<<< HEAD
 #endif
+=======
+#endif 
+>>>>>>> 40f7a524a8a1051e7f935114239e04dfeb507808

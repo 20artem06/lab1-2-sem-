@@ -4,7 +4,10 @@
 #include "weak_ptr.h"
 #include "unique_ptr.h"
 
+<<<<<<< HEAD
 #include <algorithm>
+=======
+>>>>>>> 40f7a524a8a1051e7f935114239e04dfeb507808
 #include <stdexcept>
 
 template<typename T>
@@ -161,4 +164,8 @@ public:
         }
         return *this;
     }
+<<<<<<< HEAD
 };
+=======
+};
+>>>>>>> 40f7a524a8a1051e7f935114239e04dfeb507808
