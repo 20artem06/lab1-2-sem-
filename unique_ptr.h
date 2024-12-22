@@ -4,13 +4,6 @@
 #include <cstddef>
 #include <stdexcept>
 
-// template <typename T>
-// struct UniquePtrControl {
-//     T* ptr;
-
-//     explicit UniquePtrControl(T* p = nullptr) : ptr(p) {}
-//     ~UniquePtrControl() { delete ptr; }
-// };
 
 template <typename T>
 class unique_ptr {
